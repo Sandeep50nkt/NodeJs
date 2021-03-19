@@ -1,8 +1,7 @@
 
 const express 	 = require('express');
 const bodyParser = require('body-parser');
-
-var app 		 = express();
+const app 		 = express();
 
 app.use(bodyParser.json());
 
@@ -12,5 +11,8 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
     next();
 });
+
+const digitalPrefRouter = require('./routes/digitalPrefRoute')
+app.use('/api',digitalPrefRouter)
 
 module.exports = app;
